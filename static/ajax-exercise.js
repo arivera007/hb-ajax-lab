@@ -49,7 +49,19 @@ function orderMelons(evt) {
     evt.preventDefault();
 
     // TODO: show the result message after your form
+    var formValues = $('#order-form').serialize();
+
+    $.post("/order-melons.json", formValues, displayMessage);
+
     // TODO: if the result code is ERROR, make it show up in red (see our CSS!)
+}
+
+function displayMessage(results) {
+    $('#order-status').html(results.msg);
+
+    if (results.code === 'ERROR') {
+        $('#order-status').addClass('order-error');
+    }
 }
 
 $("#order-form").on('submit', orderMelons);
