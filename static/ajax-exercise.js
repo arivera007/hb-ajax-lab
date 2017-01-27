@@ -58,6 +58,7 @@ function orderMelons(evt) {
 
 function displayMessage(results) {
     $('#order-status').html(results.msg);
+    $('#order-status').removeClass('order-error');
 
     if (results.code === 'ERROR') {
         $('#order-status').addClass('order-error');
